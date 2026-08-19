@@ -1,0 +1,169 @@
+H1MS Hospital Management System - End User License Agreement (EULA)
+=====================================================================
+
+Version: 1.0.0
+Effective Date: 2024
+Last Updated: 2024
+
+IMPORTANT: READ CAREFULLY BEFORE INSTALLING AND USING H1MS
+
+This End User License Agreement ("EULA") is a legal agreement between you 
+(the hospital/organization) and H1MS regarding the H1MS Hospital Management 
+System software and any included materials (the "Software").
+
+By installing, copying, or otherwise using the Software, you agree to be 
+bound by the terms of this EULA. If you do not agree, do not install or use 
+the Software.
+
+1. GRANT OF LICENSE
+───────────────────
+H1MS grants you a non-exclusive, non-transferable license to:
+- Install and use the Software on a single hospital network
+- Use the Software to manage patient records, appointments, and operations
+- Create and manage hospital staff accounts
+- Store patient data in an approved database (MongoDB)
+- Make backup copies of the database
+
+2. RESTRICTIONS
+───────────────
+You may NOT:
+- Copy, distribute, or share the Software with other hospitals
+- Modify, reverse-engineer, or decompile the Software
+- Remove or alter any copyright, trademark, or proprietary notices
+- Use the Software for any unauthorized purpose
+- Transfer the license to another organization without written consent
+- Host the Software on public-facing internet or cloud services
+  (hospital network only)
+
+3. INTELLECTUAL PROPERTY
+────────────────────────
+The Software is licensed, not sold. H1MS retains all ownership rights to:
+- Source code and compiled application
+- Database schemas and designs
+- User interfaces and visual elements
+- Intellectual property in the Software
+
+4. LIMITED WARRANTY
+───────────────────
+The Software is provided "AS IS" without warranties of any kind, express or
+implied. H1MS does not warrant that the Software will:
+- Meet your requirements
+- Be error-free or uninterrupted
+- Be free from defects or vulnerabilities
+
+5. LIMITATIONS OF LIABILITY
+────────────────────────────
+H1MS SHALL NOT BE LIABLE for:
+- Loss of patient data or records
+- Unauthorized access to hospital systems
+- Business interruption or loss of revenue
+- Indirect, incidental, special, or consequential damages
+- Damages arising from use or inability to use the Software
+
+6. DATA PROTECTION & PRIVACY
+─────────────────────────────
+- You are responsible for protecting patient data
+- H1MS stores data only in YOUR database (MongoDB)
+- You control all patient information access
+- You must comply with healthcare privacy laws (HIPAA, GDPR, etc.)
+- Regular backups of your MongoDB database are YOUR responsibility
+- H1MS does NOT perform automatic backups
+
+7. PATIENT DATA SECURITY
+─────────────────────────
+Your hospital is solely responsible for:
+- Securing the database connection (username/password)
+- Controlling access to the H1MS application
+- Implementing firewall rules and network security
+- Protecting administrator credentials
+- Complying with data protection regulations
+- Monitoring access logs for unauthorized access
+
+8. SUPPORT & MAINTENANCE
+─────────────────────────
+- H1MS may provide support via email or support portal
+- H1MS may release updates and patches at its discretion
+- You are responsible for testing updates before deployment
+- Updates are provided AS-IS without guarantees
+
+9. TERMINATION
+───────────────
+This license is effective until terminated. H1MS may terminate this license if:
+- You violate any terms of this EULA
+- You use the Software illegally
+- You fail to comply with data protection laws
+- Your hospital fails to renew licensing fees (if applicable)
+
+Upon termination:
+- You must stop using the Software
+- Delete all copies of the Software
+- Delete all associated configuration files
+- Your data remains in YOUR MongoDB database (not deleted)
+
+10. APPLICABLE LAW
+───────────────────
+This EULA is governed by the laws of [Your Country/Region].
+Any legal disputes shall be resolved in the courts of [Jurisdiction].
+
+11. ENTIRE AGREEMENT
+─────────────────────
+This EULA constitutes the entire agreement between you and H1MS regarding
+the Software and supersedes all prior negotiations and agreements.
+
+12. AMENDMENTS
+───────────────
+H1MS may amend this EULA at any time. Continued use of the Software
+constitutes acceptance of the amended terms.
+
+13. CONTACT INFORMATION
+────────────────────────
+For questions about this EULA or the Software:
+Email: legal@h1ms.example.com
+Website: https://h1ms.example.com
+
+14. DISCLAIMER REGARDING HEALTHCARE USE
+─────────────────────────────────────────
+⚠️ IMPORTANT FOR HEALTHCARE ORGANIZATIONS ⚠️
+
+- This Software is intended for use by healthcare organizations
+- It is your responsibility to ensure compliance with all applicable 
+  healthcare regulations (HIPAA, GDPR, local laws, etc.)
+- You must conduct your own security audits before deployment
+- You must implement appropriate access controls and encryption
+- You are responsible for all patient data security and privacy
+- H1MS is not responsible for regulatory non-compliance
+- You must obtain appropriate business associate agreements if required
+- You are responsible for incident reporting and breach notification
+
+15. ACKNOWLEDGMENT
+───────────────────
+BY INSTALLING AND USING THE SOFTWARE, YOU ACKNOWLEDGE THAT:
+✓ You have read and understand this EULA
+✓ You accept all terms and conditions
+✓ You are authorized to install Software on behalf of your hospital
+✓ You understand the limitations and disclaimers
+✓ You assume all responsibility for patient data security
+✓ You will comply with applicable laws and regulations
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+SIGNATURE REQUIRED FOR HOSPITAL DEPLOYMENTS:
+
+Hospital Name: _________________________________________________________________
+
+Authorized Representative: _____________________________________________________
+
+Title: _________________________________________________________________________
+
+Date: __________________________________________________________________________
+
+Signature: _____________________________________________________________________
+
+
+For software licensing, support, or to report security vulnerabilities:
+Email: support@h1ms.example.com
+Website: https://h1ms.example.com
+Support Portal: https://support.h1ms.example.com
+
+═══════════════════════════════════════════════════════════════════════════════
