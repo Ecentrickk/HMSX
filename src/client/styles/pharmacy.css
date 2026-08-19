@@ -1,0 +1,141 @@
+/* ═══════════════════════════════════════════════════════════
+   Pharmacy Dashboard Styles
+   ═══════════════════════════════════════════════════════════ */
+
+.pharmacy-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.pharmacy-filters {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+/* ─── Stock Indicator ──────────────────────────────────── */
+.stock-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.stock-value {
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.stock-value--ok {
+  color: var(--success-400);
+}
+
+.stock-value--low {
+  color: var(--danger-400);
+}
+
+.stock-unit {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.stock-warning {
+  font-size: var(--text-xs);
+  animation: pulse 1.5s infinite;
+}
+
+/* ─── Prescription Queue ───────────────────────────────── */
+.rx-queue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.rx-queue-item {
+  padding: var(--space-4);
+  display: flex;
+  gap: var(--space-4);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  transition: all var(--transition-fast);
+}
+
+.rx-queue-item:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+.rx-queue-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.rx-queue-item__patient {
+  font-weight: 700;
+  font-size: var(--text-base);
+}
+
+.rx-queue-item__doctor {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.rx-queue-item__meds {
+  flex: 1;
+}
+
+.rx-queue-item__med {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  font-size: var(--text-sm);
+}
+
+.rx-queue-item__med-check {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  font-size: var(--text-xs);
+}
+
+.rx-queue-item__med-check:hover {
+  border-color: var(--success-500);
+}
+
+.rx-queue-item__med-check--done {
+  background: var(--success-500);
+  border-color: var(--success-500);
+  color: white;
+}
+
+.rx-queue-item__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, var(--warning-600), var(--warning-500));
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.btn-warning:hover {
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+  transform: translateY(-1px);
+}

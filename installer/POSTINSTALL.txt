@@ -1,0 +1,210 @@
+═══════════════════════════════════════════════════════════════════════════════
+  H1MS - HOSPITAL MANAGEMENT SYSTEM - POST-INSTALLATION GUIDE
+═══════════════════════════════════════════════════════════════════════════════
+
+INSTALLATION COMPLETE ✓
+────────────────────────────────────────────────────────────────────────────────
+H1MS has been installed to: {app}
+
+Your source code is NOT included in this package — only the compiled application.
+
+
+NEXT STEPS
+────────────────────────────────────────────────────────────────────────────────
+
+STEP 1: Initial Configuration (Run ONCE - First Time Setup)
+──────────────────────────────────────────────────────────
+1. Go to Start Menu → H1MS
+2. Click "Initial Setup Wizard"
+3. You will be prompted for:
+   • MongoDB connection string (from your DBA or MongoDB Atlas)
+   • Hospital administrator email
+   • Administrator password (min 8 characters)
+
+   Example MongoDB connection strings:
+   ✓ Local: mongodb://localhost:27017/h1ms
+   ✓ Server: mongodb://127.0.0.1:27017/h1ms
+
+4. Wait for setup to complete. You should see:
+   "Setup complete! Start H1MS with: start-h1ms.bat"
+
+
+STEP 2: Start H1MS
+──────────────────────────────────────────────────────────
+After initial setup is complete:
+
+Option A - Via Start Menu:
+  • Start Menu → H1MS → Start H1MS
+  • A command window will open showing:
+    "Starting H1MS Hospital Management System..."
+    "Open http://localhost:3000 in your browser"
+
+Option B - Manual:
+  • Double-click: start-h1ms.bat
+  • The application window will remain open
+  • Close the window to stop H1MS
+
+
+STEP 3: Access the Application
+──────────────────────────────────────────────────────────
+1. Open web browser (Chrome, Edge, Firefox, Safari)
+2. Go to: http://localhost:3000
+3. Login with the administrator account you created
+4. Complete initial hospital setup:
+   - Create user accounts for staff
+   - Configure departments
+   - Set up patients and appointments
+
+
+FOLDER STRUCTURE
+────────────────────────────────────────────────────────────
+H1MS/
+├── app/                  Compiled application files (read-only)
+│   ├── server.js         Main application entry point
+│   ├── .next/            Next.js compiled assets
+│   ├── public/           Static files (CSS, images, etc.)
+│   └── prisma/           Database schema (schema.prisma)
+├── tools/                Setup and configuration utilities
+│   ├── create-admin.mjs  Administrator account creator
+│   └── node_modules/     Required Node.js packages
+├── runtime/              (Optional) Portable Node.js runtime
+├── .env                  Configuration file (CREATED during setup)
+├── start-h1ms.bat        Start the application
+├── setup-h1ms.ps1        Initial setup wizard
+└── INSTALL-GUIDE.txt     Detailed documentation
+
+
+IMPORTANT FILES
+────────────────────────────────────────────────────────────
+.env (in H1MS installation folder):
+  • Contains: DATABASE_URL, PORT, AUTH_SECRET
+  • DO NOT EDIT MANUALLY after setup
+  • DO NOT SHARE - contains credentials
+  • BACKUP this file before upgrading H1MS
+
+.env (in app\ subfolder):
+  • Duplicate of main .env (automatically managed)
+
+
+CONFIGURATION OPTIONS
+────────────────────────────────────────────────────────────
+If you need to change settings after installation:
+
+1. Locate: H1MS\.env
+
+2. Editable settings:
+   PORT=3000            (change port if 3000 is in use)
+   DATABASE_URL=...     (change MongoDB connection)
+   NEXTAUTH_URL=...     (update if accessing remotely)
+
+3. After editing .env:
+   • Stop H1MS (Ctrl+C in command window)
+   • Restart H1MS (run start-h1ms.bat again)
+   • Changes take effect
+
+
+RUNNING H1MS AUTOMATICALLY ON STARTUP
+────────────────────────────────────────────────────────────
+To auto-start H1MS when Windows boots:
+
+1. Create shortcut to: start-h1ms.bat
+2. Move shortcut to: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
+3. Next reboot, H1MS will start automatically
+
+Note: User must be logged in for H1MS to remain running.
+
+
+BACKING UP YOUR CONFIGURATION
+────────────────────────────────────────────────────────────
+Before upgrading or reinstalling:
+
+1. Stop H1MS application
+2. Backup these files:
+   • H1MS\.env
+   • H1MS\app\prisma\schema.prisma (if customized)
+
+3. To restore:
+   • Copy .env back to H1MS folder
+   • Restart H1MS (it will detect and preserve your settings)
+
+
+TROUBLESHOOTING
+────────────────────────────────────────────────────────────
+
+Q: "Application won't start"
+A: 1) Verify Node.js is installed: Open cmd → type "node -v"
+   2) Check that MongoDB is accessible
+   3) Review error message in command window
+   4) Run check-requirements.ps1 to diagnose
+
+Q: "Port 3000 already in use"
+A: 1) Edit .env and change: PORT=3001 (or another free port)
+   2) Restart H1MS
+   3) Access at http://localhost:3001
+
+Q: "Cannot access http://localhost:3000"
+A: 1) Verify H1MS is running (command window should be open)
+   2) Check firewall rules
+   3) Try with IP instead: http://127.0.0.1:3000
+   4) Check if using different port in .env
+
+Q: "MongoDB connection failed"
+A: 1) Verify MongoDB server is running
+   2) Test connection string manually
+   3) Check network access to MongoDB host
+   4) Verify credentials (user/password) are correct
+   5) Run check-requirements.ps1 for network diagnostics
+
+
+UNINSTALLING H1MS
+────────────────────────────────────────────────────────────
+1. BACKUP your .env file (contains important configuration)
+2. Control Panel → Programs and Features → H1MS → Uninstall
+3. Choose what to keep (Windows will offer cleanup options)
+
+Note: MongoDB database is NOT deleted when uninstalling
+      (your patient data remains safe in MongoDB)
+
+
+ACCESSING FROM OTHER COMPUTERS ON NETWORK
+────────────────────────────────────────────────────────────
+By default, H1MS only accepts local connections (localhost:3000).
+
+To access from other computers (workstations):
+
+1. Stop H1MS
+2. Edit .env file:
+   Change: NEXTAUTH_URL="http://localhost:3000"
+   To:     NEXTAUTH_URL="http://HOSPITAL-PC:3000"
+   (Replace HOSPITAL-PC with actual computer name or IP)
+
+3. Restart H1MS
+4. From other workstations, access:
+   http://HOSPITAL-PC:3000 (or actual IP/name)
+
+⚠ SECURITY: Do NOT expose H1MS to the internet.
+  Use VPN or hospital network only.
+
+
+UPGRADING H1MS
+────────────────────────────────────────────────────────────
+1. Backup your .env file
+2. Uninstall H1MS (this preserves .env and MongoDB data)
+3. Install new version of H1MS
+4. Copy your backup .env over the new installation
+5. Restart H1MS
+6. It will automatically detect and use existing database
+
+
+SUPPORT & DOCUMENTATION
+────────────────────────────────────────────────────────────
+• Detailed Guide: Read INSTALL-GUIDE.txt
+• MongoDB Help: https://docs.mongodb.com/
+• System Check: Run check-requirements.ps1
+• Support Email: support@h1ms.example.com
+• Documentation: https://h1ms.example.com/docs
+
+
+═══════════════════════════════════════════════════════════════════════════════
+Your H1MS installation is ready. Start using it now!
+═══════════════════════════════════════════════════════════════════════════════

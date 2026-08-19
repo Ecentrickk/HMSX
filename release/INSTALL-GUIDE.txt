@@ -1,0 +1,52 @@
+H1MS - Hospital Management System
+Installation Guide for IT Staff
+==================================
+
+WHAT YOU RECEIVED
+-----------------
+This package contains a compiled, ready-to-run copy of H1MS.
+Source code (.ts / .tsx project files) is NOT included.
+
+REQUIREMENTS
+------------
+- Windows 10 or later (64-bit)
+- MongoDB database (MongoDB Atlas cloud or hospital on-premise server)
+- Node.js 18+ OR bundled runtime\node\ (if included with your installer)
+- Network access from this PC to your MongoDB server
+
+QUICK START
+-----------
+1. Run H1MS-Setup.exe (or extract the release ZIP)
+2. Double-click "Setup H1MS" from the Start Menu (first time only)
+   - Enter your MongoDB connection string
+   - Create the hospital administrator account
+3. Double-click "Start H1MS" (or start-h1ms.bat)
+4. Open http://localhost:3000 in a web browser
+5. Sign in with the administrator account you created
+
+MONGODB SETUP
+-------------
+Each hospital needs its own MongoDB database. Options:
+
+A) MongoDB (cloud or on-premise)
+   - Connection string format:
+     mongodb://localhost:27017/h1ms
+
+FOLDER LAYOUT
+-------------
+app/          Compiled application (do not modify)
+tools/        Database setup utilities
+runtime/      Optional bundled Node.js runtime
+start-h1ms.bat    Start the application
+setup-h1ms.ps1    First-time configuration wizard
+
+SECURITY NOTES
+--------------
+- Keep .env private; it contains database credentials
+- Change default passwords after first login
+- Restrict MongoDB network access to hospital IPs only
+- Run H1MS on a trusted internal network or VPN
+
+SUPPORT
+-------
+Contact your H1MS vendor for updates, licensing, and technical support.

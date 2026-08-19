@@ -1,0 +1,172 @@
+/* ═══════════════════════════════════════════════════════════
+   Receptionist Dashboard Styles
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Doctor Filter Bar ────────────────────────────────── */
+.doctor-filter-bar {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+/* ─── Schedule Grid ────────────────────────────────────── */
+.schedule-grid {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--glass-bg);
+}
+
+.schedule-grid__header {
+  display: grid;
+  grid-template-columns: 70px repeat(5, 1fr);
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.schedule-grid__time-header,
+.schedule-grid__day-header {
+  padding: var(--space-3) var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+.schedule-grid__row {
+  display: grid;
+  grid-template-columns: 70px repeat(5, 1fr);
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.schedule-grid__row:last-child {
+  border-bottom: none;
+}
+
+.schedule-grid__time {
+  padding: var(--space-2);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--border-secondary);
+}
+
+.schedule-grid__cell {
+  padding: 4px;
+  min-height: 50px;
+  border-right: 1px solid var(--border-secondary);
+  transition: background var(--transition-fast);
+  cursor: pointer;
+}
+
+.schedule-grid__cell:last-child {
+  border-right: none;
+}
+
+.schedule-grid__cell:hover:not(.schedule-grid__cell--filled) {
+  background: rgba(99, 102, 241, 0.03);
+}
+
+/* ─── Schedule Card ────────────────────────────────────── */
+.schedule-card {
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  cursor: grab;
+  user-select: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 3px solid var(--card-color, var(--primary-500));
+  transition: all var(--transition-fast);
+}
+
+.schedule-card--completed {
+  background: rgba(34, 197, 94, 0.06);
+  opacity: 0.7;
+}
+
+.schedule-card--in_progress {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.schedule-card--scheduled {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.schedule-card:active {
+  cursor: grabbing;
+}
+
+.schedule-card__patient {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.schedule-card__meta {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* ─── Patient Registry ─────────────────────────────────── */
+.patient-registry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.onboard-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+/* ─── Billing ──────────────────────────────────────────── */
+.billing-table {
+  width: 100%;
+}
+
+.billing-item-row {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px auto;
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.billing-total {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-6);
+  padding: var(--space-4) 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .schedule-grid {
+    overflow-x: auto;
+  }
+  .schedule-grid__header,
+  .schedule-grid__row {
+    min-width: 700px;
+  }
+  .onboard-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .onboard-form {
+    grid-template-columns: 1fr;
+  }
+}

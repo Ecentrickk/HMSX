@@ -1,0 +1,122 @@
+═══════════════════════════════════════════════════════════════════════════════
+  H1MS - HOSPITAL MANAGEMENT SYSTEM - ENTERPRISE EDITION
+  Pre-Installation Requirements & Important Information
+═══════════════════════════════════════════════════════════════════════════════
+
+CRITICAL NOTICES
+────────────────────────────────────────────────────────────────────────────────
+✓ SOURCE CODE PROTECTION: This package contains ONLY compiled application files.
+  Your source code and intellectual property are NOT included or exposed.
+
+✓ DATA SECURITY: All patient data remains in YOUR database (MongoDB).
+  No data is sent to external servers.
+
+✓ ADMIN ACCESS REQUIRED: Installation requires Windows Administrator privileges.
+
+
+SYSTEM REQUIREMENTS
+────────────────────────────────────────────────────────────────────────────────
+MANDATORY:
+  • Windows 10 or Windows Server 2016+ (64-bit only)
+  • 4 GB RAM minimum (8 GB recommended)
+  • 500 MB free disk space (plus database storage)
+  • Administrator access on the installation computer
+
+ONE OF THE FOLLOWING (for Node.js runtime):
+  Option A) Node.js 18 or later installed globally (https://nodejs.org)
+  Option B) Bundled portable Node.js in runtime\node\ (if included)
+  
+DATABASE (MongoDB):
+  • MongoDB 4.4+ (Cloud or On-Premise)
+  • Network access from hospital network to MongoDB
+  • A dedicated database user with readWrite permissions
+
+
+NETWORK REQUIREMENTS
+────────────────────────────────────────────────────────────────────────────────
+OUTBOUND (Hospital → MongoDB):
+  • TCP connection to MongoDB host (port 27017 for on-premise)
+  • Connection string configured during setup
+
+INBOUND (Workstations → H1MS):
+  • HTTP/HTTPS access on configured port (default: 3000)
+  • Recommend: Setup within hospital network only (no internet exposure)
+
+
+BEFORE YOU INSTALL
+────────────────────────────────────────────────────────────────────────────────
+1. Verify MongoDB is accessible and ready
+   → If using MongoDB Atlas: Ensure cluster is running
+   → If on-premise: Ensure MongoDB service is running
+   → Test connectivity from this computer to your database
+
+2. Prepare database credentials
+   → Username and password for MongoDB user
+   → Connection string (provided by your DBA or MongoDB Atlas)
+
+3. Plan the configuration
+   → Will you use MongoDB Atlas (cloud) or on-premise MongoDB?
+   → What port should H1MS use? (default: 3000)
+   → Who will be the first hospital administrator?
+
+4. Backup any existing configuration
+   → If upgrading: Backup your current .env file
+
+
+INSTALLATION STEPS
+────────────────────────────────────────────────────────────────────────────────
+1. Extract or run the H1MS installer
+2. Choose installation folder (default: C:\Program Files\H1MS)
+3. Select "Run initial setup wizard" (RECOMMENDED for first install)
+4. Complete the Setup Wizard that appears:
+   - Enter MongoDB connection string
+   - Create hospital administrator account
+   - Verify database connection
+5. Reboot is NOT required
+6. Start H1MS from Start Menu or double-click start-h1ms.bat
+
+
+SUPPORT & DOCUMENTATION
+────────────────────────────────────────────────────────────────────────────────
+• Installation Guide: INSTALL-GUIDE.txt (in installation folder)
+• MongoDB Setup Help: https://docs.mongodb.com/manual/installation/
+• System Requirements Checker: Run check-requirements.ps1 (if provided)
+• Email Support: support@h1ms.example.com
+
+
+TROUBLESHOOTING
+────────────────────────────────────────────────────────────────────────────────
+Problem: "Node.js not found" error
+→ Solution: Install Node.js 18+ from https://nodejs.org
+            OR ensure bundled runtime\node\ was included
+
+Problem: "Cannot connect to MongoDB"
+→ Solution: 1) Verify MongoDB is running
+            2) Check connection string is correct
+            3) Verify network access/firewall rules
+            4) Confirm database user has readWrite permissions
+
+Problem: "Port 3000 already in use"
+→ Solution: 1) Close application using port 3000
+            2) Or edit .env to use different port (e.g., 3001)
+            3) Stop and start H1MS service
+
+
+PRIVACY & SECURITY NOTES
+────────────────────────────────────────────────────────────────────────────────
+• This software is fully controlled by your hospital
+• No telemetry data is sent
+• Patient information never leaves your network
+• All communication is between your network and YOUR MongoDB
+• Administrator account should use a strong password (min 8 characters)
+• Keep your MongoDB credentials secure
+
+
+LEGAL & LICENSE
+────────────────────────────────────────────────────────────────────────────────
+See LICENSE.txt for full legal terms and conditions.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+Click NEXT to continue with the installation.
+═══════════════════════════════════════════════════════════════════════════════

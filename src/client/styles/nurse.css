@@ -1,0 +1,322 @@
+/* ═══════════════════════════════════════════════════════════
+   Nurse Dashboard Styles
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Ward Tabs ────────────────────────────────────────── */
+.ward-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.ward-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3) var(--space-5);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.ward-tab:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+.ward-tab--active {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: var(--accent-500);
+}
+
+.ward-tab__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.ward-tab__info {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* ─── Bed Legend ───────────────────────────────────────── */
+.bed-legend {
+  display: flex;
+  gap: var(--space-5);
+  margin-bottom: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.bed-legend > span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.bed-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+.bed-legend__dot--available { background: var(--success-500); }
+.bed-legend__dot--occupied { background: var(--primary-500); }
+.bed-legend__dot--critical { background: var(--danger-500); }
+.bed-legend__dot--maintenance { background: var(--text-muted); }
+.bed-legend__dot--reserved { background: var(--warning-500); }
+
+/* ─── Bed Grid ─────────────────────────────────────────── */
+.bed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-3);
+}
+
+.bed-card {
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-secondary);
+  background: var(--glass-bg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 100px;
+}
+
+.bed-card:hover {
+  border-color: var(--glass-border-hover);
+}
+
+.bed-card--available {
+  border-color: rgba(34, 197, 94, 0.2);
+  background: rgba(34, 197, 94, 0.03);
+}
+
+.bed-card--occupied {
+  border-color: rgba(99, 102, 241, 0.2);
+  background: rgba(99, 102, 241, 0.03);
+}
+
+.bed-card--maintenance {
+  border-color: rgba(148, 163, 184, 0.15);
+  background: rgba(148, 163, 184, 0.03);
+  opacity: 0.6;
+}
+
+.bed-card--reserved {
+  border-color: rgba(245, 158, 11, 0.2);
+  background: rgba(245, 158, 11, 0.03);
+}
+
+.bed-card--critical-vitals {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+  animation: pulse 2s infinite;
+}
+
+.bed-card__number {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.bed-card__patient {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.bed-card__vitals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.bed-vital {
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+}
+
+.bed-vital--warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning-400);
+}
+
+.bed-vital--danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger-400);
+}
+
+.bed-card__empty {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+}
+
+/* ─── Medication Schedule ──────────────────────────────── */
+.med-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.med-schedule-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-secondary);
+  background: var(--glass-bg);
+  transition: all var(--transition-fast);
+}
+
+.med-schedule-item:hover {
+  background: var(--glass-bg-hover);
+}
+
+.med-schedule-item--overdue {
+  border-left: 3px solid var(--danger-500);
+  background: rgba(239, 68, 68, 0.03);
+}
+
+.med-schedule-item--pending {
+  border-left: 3px solid var(--warning-500);
+}
+
+.med-schedule-item--administered {
+  border-left: 3px solid var(--success-500);
+  opacity: 0.7;
+}
+
+.med-schedule-item__time {
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  min-width: 60px;
+}
+
+.med-schedule-item__info {
+  flex: 1;
+}
+
+.med-schedule-item__drug {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.med-schedule-item__patient {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* ─── Vitals Form ──────────────────────────────────────── */
+.vitals-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--glass-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-secondary);
+}
+
+.vitals-input {
+  text-align: center;
+}
+
+.vitals-input__label {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.vitals-input__value {
+  width: 100%;
+  text-align: center;
+  padding: var(--space-2);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+}
+
+.vitals-input__value:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.vitals-input__unit {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ─── Ward Bed Grid (Live) ─────────────────────────────── */
+.ward-bed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-3);
+}
+
+.ward-bed {
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-secondary);
+  background: var(--glass-bg);
+  transition: all var(--transition-fast);
+  min-height: 80px;
+}
+
+.ward-bed:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+.ward-bed--occupied {
+  border-color: rgba(99, 102, 241, 0.2);
+  background: rgba(99, 102, 241, 0.03);
+}
+
+.ward-bed__vitals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  margin-top: 4px;
+}
+
+.ward-bed__vitals span {
+  padding: 1px 5px;
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+}
+
+.ward-bed__vitals--normal span { color: var(--success-400); }
+.ward-bed__vitals--warning span { color: var(--warning-400); background: rgba(245, 158, 11, 0.1); }
+.ward-bed__vitals--critical span { color: var(--danger-400); background: rgba(239, 68, 68, 0.1); }
+
+@media (max-width: 768px) {
+  .bed-grid, .ward-bed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ward-tabs {
+    flex-wrap: nowrap;
+  }
+}

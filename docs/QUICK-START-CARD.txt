@@ -1,0 +1,341 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║           H1MS HOSPITAL MANAGEMENT SYSTEM - QUICK START GUIDE                 ║
+║                         For Hospital IT Administrators                        ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+
+📦 YOU RECEIVED
+═══════════════════════════════════════════════════════════════════════════════
+✓ H1MS-Setup-1.0.0-Enterprise.exe (or H1MS-1.0.0-win64.zip)
+✓ HOSPITAL-DEPLOYMENT-GUIDE.md (Complete guide)
+✓ README-HOSPITAL.md (Quick reference)
+✓ LICENSE.txt (Legal terms)
+
+
+⏱️ INSTALLATION (5 minutes)
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣  RUN INSTALLER
+    Double-click: H1MS-Setup-1.0.0-Enterprise.exe
+
+2️⃣  ACCEPT TERMS
+    Read and accept the license agreement
+    Click: Next
+
+3️⃣  CHECK SYSTEM
+    Review system requirements
+    Click: Install
+
+4️⃣  CHOOSE SETUP
+    Select: "Run initial setup wizard"
+    Click: Finish
+
+
+🔧 INITIAL CONFIGURATION (5 minutes)
+═══════════════════════════════════════════════════════════════════════════════
+
+A. GET MONGODB CONNECTION STRING
+   ┌─────────────────────────────────────────────────────────┐
+   │ Cloud Option (easiest):                                 │
+   │ • Go to: mongodb.com/cloud/atlas                        │
+   │ • Create cluster (Free M0)                              │
+   │ • Create database user                                  │
+   │ • Copy connection string                                │
+   │                                                         │
+   │ Example:                                                │
+   │ mongodb://localhost:27017/h1ms                          │
+   │                                                         │
+   │ On-Premise Option (if you have MongoDB):               │
+   │ mongodb://localhost:27017/h1ms                          │
+   └─────────────────────────────────────────────────────────┘
+
+B. SETUP WIZARD (appears automatically)
+   ┌─────────────────────────────────────────────────────────┐
+   │ Prompt 1: MongoDB connection string                     │
+   │ Action: Paste your connection string                    │
+   │                                                         │
+   │ Prompt 2: Server port                                   │
+   │ Action: Press Enter for 3000 (or type new port)        │
+   │                                                         │
+   │ Prompt 3: Administrator details                         │
+   │ Action: Enter name, email, password                     │
+   │                                                         │
+   │ Result: "Setup complete! Start H1MS with start-h1ms.bat"│
+   └─────────────────────────────────────────────────────────┘
+
+
+▶️ START THE APPLICATION
+═══════════════════════════════════════════════════════════════════════════════
+
+Option A - Start Menu:
+  Start → H1MS → Start H1MS
+  
+Option B - Manual:
+  Double-click: start-h1ms.bat
+  
+Option C - Command line:
+  cd H1MS
+  .\start-h1ms.bat
+
+Wait for message: "Open http://localhost:3000 in your browser"
+
+
+🌐 ACCESS H1MS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Open web browser (Chrome, Edge, Firefox)
+2. Type: http://localhost:3000
+3. Login with administrator account you created
+4. Welcome! 🎉
+
+
+📊 FIRST TIME SETUP IN H1MS
+═══════════════════════════════════════════════════════════════════════════════
+
+After logging in:
+
+1. Create Staff Accounts
+   Dashboard → Users → Add User
+   Create accounts for: doctors, nurses, receptionists, pharmacists
+
+2. Configure Departments
+   Settings → Departments → Add Department
+   Example: Cardiology, Pediatrics, ICU, etc.
+
+3. Create Test Patient
+   Dashboard → Patients → Add Patient
+   Verify system is working
+
+4. Create Test Appointment
+   Dashboard → Appointments → Schedule
+   Verify scheduling works
+
+
+🆘 TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════════════
+
+PROBLEM: "Node.js not found" error
+SOLUTION:
+  1. Install Node.js from https://nodejs.org (version 18+)
+  2. Restart the computer
+  3. Try again: .\start-h1ms.bat
+
+PROBLEM: "Cannot connect to MongoDB"
+SOLUTION:
+  1. Verify MongoDB is running/accessible
+  2. Check connection string is correct
+  3. Test connection manually if possible
+  4. Contact MongoDB support if server issues
+
+PROBLEM: "Port 3000 already in use"
+SOLUTION:
+  1. Stop H1MS (Ctrl+C)
+  2. Edit: .env file
+  3. Find: PORT=3000
+  4. Change: PORT=3001
+  5. Save and restart: .\start-h1ms.bat
+  6. Access: http://localhost:3001
+
+PROBLEM: "Cannot access http://localhost:3000"
+SOLUTION:
+  1. Verify H1MS is running (check command window)
+  2. Try: http://127.0.0.1:3000
+  3. Check Windows Firewall (may need to allow port 3000)
+  4. Try different browser
+
+PROBLEM: "Forgot administrator password"
+SOLUTION:
+  1. Create new admin account:
+  2. Stop H1MS (Ctrl+C)
+  3. Run: node tools\create-admin.mjs
+  4. Follow prompts to create new admin
+  5. Restart H1MS
+
+
+⚙️ ACCESSING FROM OTHER COMPUTERS
+═══════════════════════════════════════════════════════════════════════════════
+
+Staff at other workstations can access H1MS:
+
+1. Find the computer running H1MS:
+   Computer name: HOSPITAL-ADMIN-PC (example)
+   Or IP: 192.168.1.100
+
+2. From other computers, open browser and go to:
+   http://HOSPITAL-ADMIN-PC:3000
+   Or:
+   http://192.168.1.100:3000
+
+3. Login with hospital credentials
+
+
+🔐 IMPORTANT SECURITY NOTES
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Administrator Password: Use STRONG password (min 8 characters)
+✓ Network Access: Keep H1MS on hospital network ONLY
+✓ Database Credentials: Store safely and securely
+✓ Regular Backups: Backup MongoDB database weekly
+✓ Access Control: Assign appropriate roles to staff
+✓ Audit Logs: Review access logs regularly for security
+
+
+⏹️ STOP H1MS
+═══════════════════════════════════════════════════════════════════════════════
+
+In command window:
+  Press: Ctrl + C
+
+Or:
+  Close the command window
+
+
+💾 BACKUP YOUR CONFIGURATION
+═══════════════════════════════════════════════════════════════════════════════
+
+Important file to backup:
+  H1MS\.env
+
+This file contains your database connection and configuration.
+
+Backup command:
+  Copy-Item ".env" "backup-env.txt"
+
+
+📚 HELPFUL DOCUMENTS
+═══════════════════════════════════════════════════════════════════════════════
+
+Read for detailed information:
+
+1. HOSPITAL-DEPLOYMENT-GUIDE.md
+   → Complete guide (60+ pages)
+   → Installation details
+   → MongoDB setup (cloud & on-premise)
+   → Troubleshooting
+   → Operational procedures
+
+2. README-HOSPITAL.md
+   → Quick reference
+   → Features overview
+   → FAQ section
+   → Common tasks
+
+3. LICENSE.txt
+   → Legal terms
+   → Data security responsibility
+   → Healthcare compliance notes
+
+
+📞 SUPPORT & HELP
+═══════════════════════════════════════════════════════════════════════════════
+
+If you need help:
+
+Email:     support@h1ms.example.com
+Phone:     +XX-XXX-XXXX
+Hours:     9 AM - 5 PM (Your Timezone)
+Emergency: emergency-support@h1ms.example.com
+
+When contacting support, provide:
+✓ Hospital name
+✓ Windows version (winver)
+✓ Error message (exact text)
+✓ Steps to reproduce
+✓ Installation date
+
+
+🎓 TRAINING YOUR STAFF
+═══════════════════════════════════════════════════════════════════════════════
+
+Each role needs training on:
+
+👨‍⚕️ DOCTORS:
+  • View patient records
+  • Create prescriptions
+  • Generate medical reports
+  • Track vital signs
+
+👩‍⚕️ NURSES:
+  • Record patient vitals
+  • Manage medications
+  • Monitor ward patients
+  • Log observations
+
+💊 PHARMACISTS:
+  • Manage medication inventory
+  • Process prescriptions
+  • Track dispensed drugs
+  • Monitor stock
+
+👩‍💼 RECEPTIONISTS:
+  • Schedule appointments
+  • Patient registration
+  • Process billing
+  • Send notifications
+
+Training materials and videos available in:
+  https://training.h1ms.example.com
+
+
+✅ PRE-INSTALLATION CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+Before installing, verify:
+
+☐ Windows 10 or later (64-bit)
+☐ 4 GB+ RAM available
+☐ 500 MB+ free disk space
+☐ Administrator access
+☐ Node.js 18+ installed (or bundled with installer)
+☐ MongoDB accessible and ready
+☐ Hospital network verified
+☐ Firewall configured
+☐ Backup plan in place
+☐ Staff training scheduled
+
+
+🚀 QUICK REFERENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+START:
+  .\start-h1ms.bat
+
+STOP:
+  Ctrl+C (in command window)
+
+ACCESS:
+  http://localhost:3000
+
+SETUP (first time):
+  .\setup-h1ms.ps1
+
+CHECK SYSTEM:
+  .\check-requirements.ps1
+
+CREATE ADMIN:
+  node tools\create-admin.mjs
+
+EDIT CONFIG:
+  Notepad .env
+
+BACKUP:
+  Copy-Item ".env" "backup-env.txt"
+
+MongoDB Connection String Format:
+  Local / Server: mongodb://localhost:27017/h1ms
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎉 YOUR H1MS IS READY!
+
+You're all set to manage your hospital with H1MS.
+For detailed help, read: HOSPITAL-DEPLOYMENT-GUIDE.md
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Version: 1.0.0
+Last Updated: 2024
+For Support: support@h1ms.example.com
